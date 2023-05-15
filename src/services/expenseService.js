@@ -6,12 +6,14 @@ const getAllExpenses = () => {
   return allExpenses;
 };
 
-const getOneExpense = () => {
-  return;
+const getOneExpense = (expenseId) => {
+  const expense = Expense.getOneExpense(expenseId);
+  
+  return expense;
 };
 
 const createNewExpense = (newExpense) => {
-    console.log(newExpense)
+  console.log(newExpense);
   const expenseToInsert = {
     id: uuid(),
     createdAt: new Date().toLocaleString("en-US", { timeZone: "UTC" }),

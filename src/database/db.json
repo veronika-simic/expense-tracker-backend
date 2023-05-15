@@ -1,7 +1,7 @@
 {
   "expenses": [
     {
-      "id": 1,
+      "id": "1",
       "title": "Dog food",
       "amount": 24.56,
       "createdAt": "11/20/2021, 5:39:07 PM",
@@ -9,7 +9,7 @@
       "description": "Bought for my pet"
     },
     {
-      "id": 2,
+      "id": "2",
       "title": "Cat food",
       "amount": 32.56,
       "createdAt": "11/20/2021, 5:39:07 PM",
@@ -17,7 +17,7 @@
       "description": "Bought for my pet"
     },
     {
-      "id": 3,
+      "id": "3",
       "title": "Human food",
       "amount": 124.56,
       "createdAt": "11/20/2021, 5:39:07 PM",
@@ -25,7 +25,7 @@
       "description": "Bought for my pet"
     },
     {
-      "id": 4,
+      "id": "4",
       "title": "Human food",
       "amount": 124.56,
       "createdAt": "11/20/2021, 5:39:07 PM",
@@ -33,36 +33,12 @@
       "description": "Bought for my pet"
     },
     {
-      "id": 5,
+      "id": "5",
       "title": "Human food",
       "amount": 124.56,
       "createdAt": "11/20/2021, 5:39:07 PM",
       "updatedAt": "11/20/2021, 5:39:07 PM",
       "description": "Bought for my pet"
-    },
-    {
-      "id": 6,
-      "title": "Human food",
-      "amount": 124.56,
-      "createdAt": "11/20/2021, 5:39:07 PM",
-      "updatedAt": "11/20/2021, 5:39:07 PM",
-      "description": "Bought for my pet"
-    },
-    {
-      "id": 7,
-      "title": "Human food",
-      "amount": 124.56,
-      "createdAt": "11/20/2021, 5:39:07 PM",
-      "updatedAt": "11/20/2021, 5:39:07 PM",
-      "description": "Bought for my pet"
-    },
-    {
-      "title": "Dog food",
-      "amount": 24.56,
-      "description": "Bought for my pet",
-      "id": "4ced1cc1-5421-4276-8582-379915c80481",
-      "createdAt": "5/15/2023, 6:29:59 AM",
-      "updatedAt": "5/15/2023, 6:29:59 AM"
     },
     {
       "id": "35a82f78-8376-4d95-b2f3-8e6152cedcdd",
