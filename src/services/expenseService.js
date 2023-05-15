@@ -1,5 +1,8 @@
+const Expense = require("../database/Expense");
+
 const getAllExpenses = () => {
-  return;
+  const allExpenses = Expense.getAllExpenses();
+  return allExpenses;
 };
 
 const getOneExpense = () => {

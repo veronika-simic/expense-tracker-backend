@@ -2,7 +2,7 @@ const expenseService = require("../services/expenseService");
 
 const getAllExpenses = (req, res) => {
   const allExpenses = expenseService.getAllExpenses();
-  res.send("Get all expenses");
+  res.send({ status: "OK", data: allExpenses });
 };
 
 const getOneExpense = (req, res) => {
