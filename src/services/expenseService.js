@@ -27,8 +27,9 @@ const updateOneExpense = (expenseId, body) => {
   return updatedExpense;
 };
 
-const deleteOneExpense = () => {
-  return;
+const deleteOneExpense = (expenseId) => {
+  const deletedExpense = Expense.deleteOneExpense(expenseId);
+  return deletedExpense;
 };
 
 module.exports = {

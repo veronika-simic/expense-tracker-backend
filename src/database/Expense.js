@@ -29,6 +29,17 @@ const updateOneExpense = (expenseId, body) => {
   return updatedExpense;
 };
 
+const deleteOneExpense = (expenseId) => {
+  const indexForDeletion = DB.expenses.findIndex(
+    (expense) => expense.id === expenseId
+  );
+  if (indexForDeletion === -1) {
+    return;
+  }
+  DB.expenses.splice(indexForDeletion, 1);
+  saveToDatabase(DB);
+};
+
 const createNewExpense = (newExpense) => {
   DB.expenses.push(newExpense);
   saveToDatabase(DB);
@@ -39,5 +50,6 @@ module.exports = {
   getAllExpenses,
   getOneExpense,
   updateOneExpense,
+  deleteOneExpense,
   createNewExpense,
 };

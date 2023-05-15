@@ -32,7 +32,7 @@ const updateOneExpense = (req, res) => {
     body,
     params: { expenseId },
   } = req;
-  console.log(expenseId)
+  console.log(expenseId);
   if (!expenseId) {
     return;
   }
@@ -41,8 +41,11 @@ const updateOneExpense = (req, res) => {
 };
 
 const deleteOneExpense = (req, res) => {
-  const deleteExpense = expenseService.deleteOneExpense();
-  res.send("Delete existing expense");
+  const {
+    params: { expenseId },
+  } = req;
+  const deleteExpense = expenseService.deleteOneExpense(expenseId);
+  res.send({status: "OK", deleteExpense});
 };
 
 module.exports = {
