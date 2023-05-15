@@ -1,24 +1,15 @@
 const express = require("express");
+const expenseController = require("../../controllers/expenseController");
 const router = express.Router();
 
-router.get("/", (req, res) => {
-  res.send("Get all expenses");
-});
+router.get("/", expenseController.getAllExpenses);
 
-router.get("/:expenseId", (req, res) => {
-  res.send("Get an existing expense");
-});
+router.get("/:expenseId", expenseController.getOneExpense);
 
-router.post("/", (req, res) => {
-  res.send("Create new expense");
-});
+router.post("/", expenseController.createNewExpense);
 
-router.patch("/:expenseId", (req, res) => {
-  res.send("Update existing expense");
-});
+router.patch("/:expenseId", expenseController.updateOneExpense);
 
-router.delete("/:expenseId", (req, res) => {
-  res.send("Delete existing expense");
-});
+router.delete("/:expenseId", expenseController.deleteOneExpense);
 
 module.exports = router;
