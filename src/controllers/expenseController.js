@@ -11,8 +11,18 @@ const getOneExpense = (req, res) => {
 };
 
 const createNewExpense = (req, res) => {
-  const createExpense = expenseService.createNewExpense();
-  res.send("Create new expense");
+  const { body } = req;
+  console.log(body)
+  if (!body.title || !body.amount || !body.description) {
+    return;
+  }
+  const newExpense = {
+    title: body.title,
+    amount: body.amount,
+    description: body.description,
+  };
+  const createdExpense = expenseService.createNewExpense(newExpense);
+  res.status(201).send({status: "OK", data: createdExpense});
 };
 
 const updateOneExpense = (req, res) => {
