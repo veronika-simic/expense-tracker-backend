@@ -8,12 +8,10 @@ const getAllExpenses = () => {
 
 const getOneExpense = (expenseId) => {
   const expense = Expense.getOneExpense(expenseId);
-  
   return expense;
 };
 
 const createNewExpense = (newExpense) => {
-  console.log(newExpense);
   const expenseToInsert = {
     id: uuid(),
     createdAt: new Date().toLocaleString("en-US", { timeZone: "UTC" }),
@@ -24,8 +22,9 @@ const createNewExpense = (newExpense) => {
   return createdExpense;
 };
 
-const updateOneExpense = () => {
-  return;
+const updateOneExpense = (expenseId, body) => {
+  const updatedExpense = Expense.updateOneExpense(expenseId, body);
+  return updatedExpense;
 };
 
 const deleteOneExpense = () => {

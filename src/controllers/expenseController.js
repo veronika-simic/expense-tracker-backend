@@ -28,8 +28,16 @@ const createNewExpense = (req, res) => {
 };
 
 const updateOneExpense = (req, res) => {
-  const updateExpense = expenseService.updateOneExpense();
-  res.send("Update existing expense");
+  const {
+    body,
+    params: { expenseId },
+  } = req;
+  console.log(expenseId)
+  if (!expenseId) {
+    return;
+  }
+  const updateExpense = expenseService.updateOneExpense(expenseId, body);
+  res.send({ status: "OK", data: updateExpense });
 };
 
 const deleteOneExpense = (req, res) => {

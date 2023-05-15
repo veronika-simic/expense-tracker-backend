@@ -5,11 +5,28 @@ const getAllExpenses = () => {
 };
 
 const getOneExpense = (expenseId) => {
-  const expense = DB.expenses.find((expense) => expense.id === expenseId)
+  const expense = DB.expenses.find((expense) => expense.id === expenseId);
   if (!expense) {
     return "Expense does not exist";
   }
   return expense;
+};
+
+const updateOneExpense = (expenseId, body) => {
+  const indexForUpdate = DB.expenses.findIndex(
+    (expense) => expense.id === expenseId
+  );
+  if (indexForUpdate === -1) {
+    return;
+  }
+  const updatedExpense = {
+    ...DB.expenses[indexForUpdate],
+    ...body,
+    updatedAt: new Date().toLocaleString("en-US", { timeZone: "UTC" }),
+  };
+  DB.expenses[indexForUpdate] = updatedExpense;
+  saveToDatabase(DB);
+  return updatedExpense;
 };
 
 const createNewExpense = (newExpense) => {
@@ -18,4 +35,9 @@ const createNewExpense = (newExpense) => {
   return newExpense;
 };
 
-module.exports = { getAllExpenses, getOneExpense, createNewExpense };
+module.exports = {
+  getAllExpenses,
+  getOneExpense,
+  updateOneExpense,
+  createNewExpense,
+};
