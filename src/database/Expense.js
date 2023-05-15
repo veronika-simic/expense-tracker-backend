@@ -41,9 +41,13 @@ const deleteOneExpense = (expenseId) => {
 };
 
 const createNewExpense = (newExpense) => {
-  DB.expenses.push(newExpense);
-  saveToDatabase(DB);
-  return newExpense;
+  try {
+    DB.expenses.push(newExpense);
+    saveToDatabase(DB);
+    return newExpense;
+  } catch (error) {
+    throw { status: 500, message: error?.message || error };
+  }
 };
 
 module.exports = {

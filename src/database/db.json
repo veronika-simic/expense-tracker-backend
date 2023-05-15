@@ -39,6 +39,27 @@
       "title": "Dog food",
       "amount": 24.56,
       "description": "Bought for my pet"
+    },
+    {
+      "id": "f9de8147-22b1-4fd2-b8bc-b4af7e98073c",
+      "createdAt": "5/15/2023, 7:28:55 AM",
+      "updatedAt": "5/15/2023, 7:28:55 AM",
+      "amount": 24.56,
+      "description": "Bought for my pet"
+    },
+    {
+      "id": "178a4273-4f53-42a6-a87a-3fddf10a221e",
+      "createdAt": "5/15/2023, 8:05:40 AM",
+      "updatedAt": "5/15/2023, 8:05:40 AM",
+      "amount": 24.56,
+      "description": "Bought for my pet"
+    },
+    {
+      "id": "e0a430d4-1697-4101-80ce-460b204ff493",
+      "createdAt": "5/15/2023, 8:06:01 AM",
+      "updatedAt": "5/15/2023, 8:06:01 AM",
+      "amount": 24.56,
+      "description": "Bought for my pet"
     }
   ]
 }

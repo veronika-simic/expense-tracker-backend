@@ -2,13 +2,21 @@ const Expense = require("../database/Expense");
 const { v4: uuid } = require("uuid");
 
 const getAllExpenses = () => {
-  const allExpenses = Expense.getAllExpenses();
-  return allExpenses;
+  try {
+    const allExpenses = Expense.getAllExpenses();
+    return allExpenses;
+  } catch (error) {
+    return error;
+  }
 };
 
 const getOneExpense = (expenseId) => {
-  const expense = Expense.getOneExpense(expenseId);
-  return expense;
+  try {
+    const expense = Expense.getOneExpense(expenseId);
+    return expense;
+  } catch (error) {
+    return error;
+  }
 };
 
 const createNewExpense = (newExpense) => {
@@ -18,18 +26,30 @@ const createNewExpense = (newExpense) => {
     updatedAt: new Date().toLocaleString("en-US", { timeZone: "UTC" }),
     ...newExpense,
   };
-  const createdExpense = Expense.createNewExpense(expenseToInsert);
-  return createdExpense;
+  try {
+    const createdExpense = Expense.createNewExpense(expenseToInsert);
+    return createdExpense;
+  } catch (error) {
+    return error;
+  }
 };
 
 const updateOneExpense = (expenseId, body) => {
-  const updatedExpense = Expense.updateOneExpense(expenseId, body);
-  return updatedExpense;
+  try {
+    const updatedExpense = Expense.updateOneExpense(expenseId, body);
+    return updatedExpense;
+  } catch (error) {
+    return error;
+  }
 };
 
 const deleteOneExpense = (expenseId) => {
-  const deletedExpense = Expense.deleteOneExpense(expenseId);
-  return deletedExpense;
+  try {
+    const deletedExpense = Expense.deleteOneExpense(expenseId);
+    return deletedExpense;
+  } catch (error) {
+    return error;
+  }
 };
 
 module.exports = {

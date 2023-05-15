@@ -1,14 +1,34 @@
 const expenseService = require("../services/expenseService");
 
 const getAllExpenses = (req, res) => {
-  const allExpenses = expenseService.getAllExpenses();
-  res.send({ status: "OK", data: allExpenses });
+  try {
+    const allExpenses = expenseService.getAllExpenses();
+    res.send({ status: "OK", data: allExpenses });
+  } catch (error) {
+    res
+      .status(error?.status || 500)
+      .send({ status: "FAILED", data: { error: error?.message || error } });
+  }
 };
 
 const getOneExpense = (req, res) => {
   const {
     params: { expenseId },
   } = req;
+  if (!expenseId) {
+    res.status(400).send({
+      status: "FAILED",
+      data: { error: "Parameter ':expenseId' can not be empty" },
+    });
+  }
+  try {
+    const expense = expenseService.getOneExpense(expenseId);
+    res.send({ status: "OK", data: expense });
+  } catch (error) {
+    res
+      .status(error?.status || 500)
+      .send({ status: "FAILED", data: { error: error?.message || error } });
+  }
   const expense = expenseService.getOneExpense(expenseId);
   res.send({ status: "OK", data: expense });
 };
@@ -16,15 +36,27 @@ const getOneExpense = (req, res) => {
 const createNewExpense = (req, res) => {
   const { body } = req;
   if (!body.title || !body.amount || !body.description) {
-    return;
   }
+  res.status(400).send({
+    status: "FAILED",
+    data: {
+      error:
+        "One of the following keys is missing or is empty in request body: 'title', 'amount', 'description'",
+    },
+  });
   const newExpense = {
     title: body.title,
     amount: body.amount,
     description: body.description,
   };
-  const createdExpense = expenseService.createNewExpense(newExpense);
-  res.status(201).send({ status: "OK", data: createdExpense });
+  try {
+    const createdExpense = expenseService.createNewExpense(newExpense);
+    res.status(201).send({ status: "OK", data: createdExpense });
+  } catch (error) {
+    res
+      .status(error?.status || 500)
+      .send({ status: "FAILED", data: { error: error?.message || error } });
+  }
 };
 
 const updateOneExpense = (req, res) => {
@@ -45,7 +77,7 @@ const deleteOneExpense = (req, res) => {
     params: { expenseId },
   } = req;
   const deleteExpense = expenseService.deleteOneExpense(expenseId);
-  res.send({status: "OK", deleteExpense});
+  res.send({ status: "OK", deleteExpense });
 };
 
 module.exports = {
