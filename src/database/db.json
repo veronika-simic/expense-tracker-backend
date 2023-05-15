@@ -1,0 +1,47 @@
+{
+  "expenses": [
+    { "id": 1, "title": "Dog food", "amount": 24.56, "date": "2023/2/3" },
+    {
+      "id": 2,
+      "title": "Cat food",
+      "amount": 32.56,
+      "date": "2023/2/3",
+      "description": "Bought for my pet"
+    },
+    {
+      "id": 3,
+      "title": "Human food",
+      "amount": 124.56,
+      "date": "2023/2/3",
+      "description": "Bought for my pet"
+    },
+    {
+      "id": 4,
+      "title": "Human food",
+      "amount": 124.56,
+      "date": "2023/2/3",
+      "description": "Bought for my pet"
+    },
+    {
+      "id": 5,
+      "title": "Human food",
+      "amount": 124.56,
+      "date": "2023/2/3",
+      "description": "Bought for my pet"
+    },
+    {
+      "id": 6,
+      "title": "Human food",
+      "amount": 124.56,
+      "date": "2023/2/3",
+      "description": "Bought for my pet"
+    },
+    {
+      "id": 7,
+      "title": "Human food",
+      "amount": 124.56,
+      "date": "2023/2/3",
+      "description": "Bought for my pet"
+    }
+  ]
+}
