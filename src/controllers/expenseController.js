@@ -66,18 +66,37 @@ const updateOneExpense = (req, res) => {
   } = req;
   console.log(expenseId);
   if (!expenseId) {
-    return;
+    res
+      .status(error?.status || 500)
+      .send({ status: "FAILED", data: { error: error?.message || error } });
   }
-  const updateExpense = expenseService.updateOneExpense(expenseId, body);
-  res.send({ status: "OK", data: updateExpense });
+  try {
+    const updateExpense = expenseService.updateOneExpense(expenseId, body);
+    res.send({ status: "OK", data: updateExpense });
+  } catch (error) {
+    res
+      .status(error?.status || 500)
+      .send({ status: "FAILED", data: { error: error?.message || error } });
+  }
 };
 
 const deleteOneExpense = (req, res) => {
   const {
     params: { expenseId },
   } = req;
-  const deleteExpense = expenseService.deleteOneExpense(expenseId);
-  res.send({ status: "OK", deleteExpense });
+  if (!expenseId) {
+    res
+      .status(error?.status || 500)
+      .send({ status: "FAILED", data: { error: error?.message || error } });
+  }
+  try {
+    const deleteExpense = expenseService.deleteOneExpense(expenseId);
+    res.send({ status: "OK", deleteExpense });
+  } catch (error) {
+    res
+      .status(error?.status || 500)
+      .send({ status: "FAILED", data: { error: error?.message || error } });
+  }
 };
 
 module.exports = {
