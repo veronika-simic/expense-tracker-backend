@@ -3,7 +3,7 @@ const { saveToDatabase } = require("./utils");
 
 const getAllExpenses = () => {
   try {
-    return DB.expenses;
+    return DB.expenses; // does not throw error
   } catch (error) {
     throw { status: 500, message: error };
   }

@@ -2,6 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const v1ExpenseRouter = require("./v1/routes/expenseRoutes");
 const app = express();
+const middleware = require("./middleware/authorization");
 const PORT = process.env.PORT || 4000;
 
 app.get("/", (req, res) => {
