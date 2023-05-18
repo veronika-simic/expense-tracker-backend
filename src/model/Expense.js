@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const { Schema, model } = mongoose;
+const { Schema, SchemaTypes, model } = mongoose;
 
 const expenseSchema = new Schema({
   title: {
@@ -17,6 +17,11 @@ const expenseSchema = new Schema({
   },
   updatedAt: Date,
   description: String,
+  user: {
+    type: SchemaTypes.ObjectId,
+    ref: "User",
+    required: true,
+  },
 });
 
 const Expense = model("Expense", expenseSchema);
