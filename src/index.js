@@ -5,6 +5,7 @@ const app = express();
 const middleware = require("./middleware/authorization");
 const PORT = process.env.PORT || 4000;
 const mongoose = require("mongoose");
+const Expense = require('./model/Expense')
 app.get("/", (req, res) => {
   res.send("It works");
 });
@@ -18,3 +19,11 @@ app.listen(PORT, () => {
 /*veronikasimic21 oMM0926WfBcETR7J */
 
 mongoose.connect('mongodb+srv://veronikasimic21:oMM0926WfBcETR7J@expenses.jrclev0.mongodb.net/')
+
+const exp = Expense.create({
+  title: 'Fish food',
+  amount: 2,
+  description: 'yummy',
+});
+
+console.log(exp);
