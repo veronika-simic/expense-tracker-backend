@@ -4,7 +4,7 @@ const mongoose = require("mongoose");
 const getAllExpenses = async (req, res) => {
   try {
     const expenses = await Expense.find({}).sort({ createdAt: -1 });
-    res.send({ status: "OK", data: expenses });
+    res.status(200).json(expenses);
   } catch (error) {
     res
       .status(error?.status || 500)
@@ -25,7 +25,7 @@ const getExpense = async (req, res) => {
   }
   try {
     const expense = await Expense.findById(id);
-    res.send({ status: "OK", data: expense });
+    res.status(200).json(expense);
   } catch (error) {
     res
       .status(error?.status || 500)
@@ -51,7 +51,7 @@ const createNewExpense = async (req, res) => {
   };
   try {
     const createdExpense = await Expense.create(newExpense);
-    res.status(201).send({ status: "OK", data: createdExpense });
+    res.status(200).json(createdExpense);
   } catch (error) {
     res
       .status(error?.status || 500)
@@ -75,7 +75,7 @@ const updateOneExpense = async (req, res) => {
       { _id: id },
       { ...body }
     );
-    res.send({ status: "OK", data: updateExpense });
+    res.status(200).json(updateExpense);
   } catch (error) {
     res
       .status(error?.status || 500)
@@ -96,7 +96,7 @@ const deleteExpense = async (req, res) => {
 
   try {
     const deleteExpense = await Expense.findOneAndDelete({ _id: id });
-    res.send({ status: "OK", deleteExpense });
+    res.status(200).json(deleteExpense);
   } catch (error) {
     res
       .status(error?.status || 500)
