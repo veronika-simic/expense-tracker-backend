@@ -12,6 +12,10 @@ const expenseSchema = new Schema(
       required: true,
     },
     description: { type: String, required: false },
+    user_id: {
+      type: String,
+      required: true
+    }
   },
   { timestamps: true }
 );
