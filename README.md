@@ -27,15 +27,13 @@
 - React - version 18.2.0
 - Express - version 4.18.2
 
-
 ## Features
 
 - User can login by providing a valid email address and password
-- Password has to have at least 6 characters and 1 number
+- Password has to have at least 8 characters, which includes a number, uppercase letter and a special character
 - User can input expenses by specifiying title, amount, date of purchase and description
 
 ## Screenshots
-
 
 ## Setup
 
@@ -54,7 +52,6 @@ After that run the project from the root with
 To see the project in browser visit:
 
 > http://localhost:4000/
-
 
 ## Usage
 

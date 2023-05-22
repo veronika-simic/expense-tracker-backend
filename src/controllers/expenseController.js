@@ -47,12 +47,14 @@ const createNewExpense = async (req, res) => {
   const newExpense = {
     title: body.title,
     amount: body.amount,
+    quantity: body.quantity,
     date: body.date,
+    category: body.category,
     description: body.description,
-    user_id
+    user_id,
   };
   try {
-    const user_id = req.user_id
+    const user_id = req.user_id;
     const createdExpense = await Expense.create(newExpense);
     res.status(200).json(createdExpense);
   } catch (error) {

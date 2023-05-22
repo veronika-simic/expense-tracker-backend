@@ -11,11 +11,19 @@ const expenseSchema = new Schema(
       type: Number,
       required: true,
     },
+    quantity: {
+      type: Number,
+      default: 1,
+    },
+    category: {
+      type: String,
+      default: "Other",
+    },
     description: { type: String, required: false },
     user_id: {
       type: String,
-      required: true
-    }
+      required: true,
+    },
   },
   { timestamps: true }
 );
