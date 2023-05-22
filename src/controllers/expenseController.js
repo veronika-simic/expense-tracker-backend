@@ -35,7 +35,7 @@ const getExpense = async (req, res) => {
 
 const createNewExpense = async (req, res) => {
   const { body } = req;
-  if (!body.title || !body.amount || !body.description) {
+  if (!body.title || !body.amount || !body.date) {
     return res.status(400).send({
       status: "FAILED",
       data: {
@@ -47,6 +47,7 @@ const createNewExpense = async (req, res) => {
   const newExpense = {
     title: body.title,
     amount: body.amount,
+    date: body.date,
     description: body.description,
   };
   try {
