@@ -51,6 +51,7 @@ const createNewExpense = async (req, res) => {
     date: body.date,
     category: body.category || "Other",
     description: body.description || "No description",
+    total: body.amount * body.quantity,
   };
   try {
     const createdExpense = await Expense.create(newExpense);

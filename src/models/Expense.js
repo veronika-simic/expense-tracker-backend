@@ -19,6 +19,12 @@ const expenseSchema = new Schema(
       type: String,
     },
     description: { type: String, required: false },
+    total: { type: Number, required: false },
+    date: {
+      type: Date,
+      required: false,
+      default: Date.now,
+    },
   },
   { timestamps: true }
 );
