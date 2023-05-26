@@ -35,12 +35,12 @@ const getExpense = async (req, res) => {
 
 const createNewExpense = async (req, res) => {
   const { body } = req;
-  if (!body.title || !body.amount || !body.date) {
+  if (!body.title || !body.amount || !body.quantity) {
     return res.status(400).send({
       status: "FAILED",
       data: {
         error:
-          "One of the following keys is missing or is empty in request body: 'title', 'amount', 'description'",
+          "One of the following keys is missing or is empty in request body: 'title', 'amount', 'quantity'",
       },
     });
   }
@@ -49,12 +49,10 @@ const createNewExpense = async (req, res) => {
     amount: body.amount,
     quantity: body.quantity,
     date: body.date,
-    category: body.category,
-    description: body.description,
-    user_id,
+    category: body.category || "Other",
+    description: body.description || "No description",
   };
   try {
-    const user_id = req.user_id;
     const createdExpense = await Expense.create(newExpense);
     res.status(200).json(createdExpense);
   } catch (error) {

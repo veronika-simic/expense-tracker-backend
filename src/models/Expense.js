@@ -13,17 +13,12 @@ const expenseSchema = new Schema(
     },
     quantity: {
       type: Number,
-      default: 1,
+      required: true,
     },
     category: {
       type: String,
-      default: "Other",
     },
     description: { type: String, required: false },
-    user_id: {
-      type: String,
-      required: true,
-    },
   },
   { timestamps: true }
 );
