@@ -4,8 +4,12 @@ const mongoose = require("mongoose");
 const getAllExpenses = async (req, res) => {
   const user_id = req.user._id;
   const filters = req.query;
+  const page = req.query.page * 1 || 1;
+  const limit = req.query.limit * 1 || 8;
+  const skip = (page - 1) * limit;
+ 
   try {
-    const expenses = await Expense.find({ user_id }).sort({ createdAt: -1 });
+    let expenses = await Expense.find({ user_id }).sort({ createdAt: -1 }).skip(skip).limit(limit);
     const filteredExpenses = expenses.filter((expense) => {
       let isValid = true;
       for (key in filters) {
@@ -13,7 +17,7 @@ const getAllExpenses = async (req, res) => {
       }
       return isValid;
     });
-    res.status(200).json(filteredExpenses);
+    res.status(200).json(expenses);
   } catch (error) {
     res
       .status(error?.status || 500)
