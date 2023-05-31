@@ -3,9 +3,17 @@ const mongoose = require("mongoose");
 
 const getAllExpenses = async (req, res) => {
   const user_id = req.user._id;
+  const filters = req.query;
   try {
     const expenses = await Expense.find({ user_id }).sort({ createdAt: -1 });
-    res.status(200).json(expenses);
+    const filteredExpenses = expenses.filter((expense) => {
+      let isValid = true;
+      for (key in filters) {
+        isValid = isValid && expense[key] == filters[key];
+      }
+      return isValid;
+    });
+    res.status(200).json(filteredExpenses);
   } catch (error) {
     res
       .status(error?.status || 500)
