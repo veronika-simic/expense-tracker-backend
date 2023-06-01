@@ -3,23 +3,21 @@ const mongoose = require("mongoose");
 
 const getAllExpenses = async (req, res) => {
   const user_id = req.user._id;
-  const filters = req.query;
   const page = req.query.page * 1 || 1;
   const limit = req.query.limit * 1 || 8;
   const skip = (page - 1) * limit;
 
   try {
-    let expenses = await Expense.find({ user_id })
+    const excludeFields = ["sort", "page", "limit", "fields"];
+    const queryObj = { ...req.query };
+    excludeFields.forEach((el) => {
+      delete queryObj[el];
+    });
+
+    const expenses = await Expense.find(queryObj)
       .sort(req.query.sort)
       .skip(skip)
       .limit(limit);
-    const filteredExpenses = expenses.filter((expense) => {
-      let isValid = true;
-      for (key in filters) {
-        isValid = isValid && expense[key] == filters[key];
-      }
-      return isValid;
-    });
     res.status(200).json(expenses);
   } catch (error) {
     res
