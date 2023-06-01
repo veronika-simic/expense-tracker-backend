@@ -9,7 +9,7 @@ const getAllExpenses = async (req, res) => {
 
   try {
     const excludeFields = ["sort", "page", "limit", "fields"];
-    const queryObj = { ...req.query };
+    const queryObj = {user_id,  ...req.query };
     excludeFields.forEach((el) => {
       delete queryObj[el];
     });
