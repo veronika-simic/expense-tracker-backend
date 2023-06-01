@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const expenseRoutes = require("./src/routes/expenseRoutes");
 const userRoutes = require("./src/routes/userRoutes");
+const { swaggerDocs: V1SwaggerDocs } = require("./src/documentation/swagger");
 const mongoose = require("mongoose");
 require("dotenv").config();
 
@@ -20,6 +21,7 @@ mongoose
   .then(() => {
     app.listen(process.env.PORT, () => {
       console.log("connected to db and listening on port", process.env.PORT);
+      V1SwaggerDocs(app, process.env.PORT);
     });
   })
   .catch((error) => {
