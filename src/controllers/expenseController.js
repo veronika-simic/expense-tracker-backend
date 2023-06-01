@@ -7,9 +7,12 @@ const getAllExpenses = async (req, res) => {
   const page = req.query.page * 1 || 1;
   const limit = req.query.limit * 1 || 8;
   const skip = (page - 1) * limit;
- 
+
   try {
-    let expenses = await Expense.find({ user_id }).sort({ createdAt: -1 }).skip(skip).limit(limit);
+    let expenses = await Expense.find({ user_id })
+      .sort(req.query.sort)
+      .skip(skip)
+      .limit(limit);
     const filteredExpenses = expenses.filter((expense) => {
       let isValid = true;
       for (key in filters) {
