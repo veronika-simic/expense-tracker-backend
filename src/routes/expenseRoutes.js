@@ -87,6 +87,47 @@
  *     security: 
  *         - user_auth:
  *             - write:users
+ *             - read:users
+ *   patch:
+ *     tags:
+ *       - Expenses
+ *     summary: Update existing expense
+ *     description: Update existing expense by ID
+ *     operationId: updateExpense
+ *     parameters: 
+ *       -  in: path
+ *          name: expenseId
+ *          description: ID of expense to update
+ *          required: true
+ *          schema: 
+ *           type: string
+ *     requestBody:
+ *       description: Update existing expense
+ *       content:
+ *         application/json:
+ *           schema:
+ *              $ref: "#/components/schemas/Expense"
+ *         application/xml:
+ *           schema:
+ *              $ref: "#/components/schemas/Expense"
+ *         application/x-www-form-urlencoded:
+ *          schema:
+ *              $ref: "#/components/schemas/Expense"
+ *       required: true
+ *     responses:
+ *       200:
+ *         description: OK
+ *         content:
+ *           application/json:
+ *             schema:
+ *                $ref: "#/components/schemas/Expense"
+ *       401:
+ *         description: Missing authentication token      
+ *       500: 
+ *         description: Internal server error
+ *     security: 
+ *         - user_auth:
+ *             - write:users
  *             - read:users  
  * components:
  *   schemas:
