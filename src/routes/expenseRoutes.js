@@ -22,6 +22,43 @@
  *         - user_auth:
  *             - write:users
  *             - read:users
+ *   post:
+ *     tags:
+ *       - Expenses
+ *     summary: Add new expense
+ *     description: Add new expense
+ *     operationId: addExpense
+ *     requestBody: 
+ *       description: Create a new expense
+ *       content:
+ *        application/json:
+ *          schema:
+ *              $ref: "#/components/schemas/Expense"
+ *        application/xml:
+ *          schema:
+ *              $ref: "#/components/schemas/Expense"
+ *        application/x-www-form-urlencoded:
+ *          schema:
+ *              $ref: "#/components/schemas/Expense"
+ *       required: true
+ *     responses:
+ *       200:
+ *         description: OK
+ *         content:
+ *           application/json:
+ *             schema:
+ *                $ref: "#/components/schemas/Expense"
+ *           application/xml:
+ *             schema:
+ *              $ref: "#/components/schemas/Expense"
+ *       405:
+ *         description: Invalid input     
+ *       500: 
+ *         description: Internal server error
+ *     security: 
+ *         - user_auth:
+ *             - write:users
+ *             - read:users
  * /api/expenses/{expenseId}:
  *   get:
  *     tags:
@@ -50,7 +87,7 @@
  *     security: 
  *         - user_auth:
  *             - write:users
- *             - read:users
+ *             - read:users  
  * components:
  *   schemas:
  *     Expense:
