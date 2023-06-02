@@ -2,6 +2,8 @@
  * @openapi
  * /api/expenses:
  *   get:
+ *     security: 
+ *      - bearerAuth: []
  *     tags:
  *       - Expenses
  *     summary: Gets all expenses
@@ -20,11 +22,9 @@
  *         description: Missing authentication token      
  *       500: 
  *         description: Internal server error
- *     security: 
- *         - user_auth:
- *             - write:users
- *             - read:users
  *   post:
+ *     security: 
+ *       - bearerAuth: []
  *     tags:
  *       - Expenses
  *     summary: Add new expense
@@ -57,12 +57,10 @@
  *         description: Invalid input     
  *       500: 
  *         description: Internal server error
- *     security: 
- *         - user_auth:
- *             - write:users
- *             - read:users
  * /api/expenses/{expenseId}:
  *   get:
+ *     security: 
+ *       - bearerAuth: []
  *     tags:
  *       - Expenses
  *     summary: Find expense by ID
@@ -90,11 +88,9 @@
  *         description: Expense not found          
  *       500: 
  *         description: Internal server error
- *     security: 
- *         - user_auth:
- *             - write:users
- *             - read:users
  *   patch:
+ *     security: 
+ *       - bearerAuth: []
  *     tags:
  *       - Expenses
  *     summary: Update existing expense
@@ -134,12 +130,10 @@
  *       404: 
  *         description: Expense not found          
  *       500: 
- *         description: Internal server error
- *     security: 
- *         - user_auth:
- *             - write:users
- *             - read:users  
+ *         description: Internal server error 
  *   delete:
+ *     security: 
+ *       - bearerAuth: []
  *     tags:
  *       - Expenses
  *     summary: Delete existing expense
@@ -162,11 +156,7 @@
  *       404: 
  *         description: Expense not found          
  *       500: 
- *         description: Internal server error
- *     security: 
- *         - user_auth:
- *             - write:users
- *             - read:users  
+ *         description: Internal server error 
  * components:
  *   securitySchemes:
  *      bearerAuth:
@@ -208,8 +198,6 @@
  *         updatedAt:
  *           type: string
  *           example: 4/20/2022, 2:21:56 PM
- * security:
- *    - bearerAuth: []  
  */
 
 const express = require("express");

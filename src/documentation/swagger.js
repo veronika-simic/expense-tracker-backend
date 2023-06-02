@@ -7,7 +7,7 @@ const options = {
     info: {
       title: "Expenses Tracker API",
       description:
-        "This is a Expense Tracker App Swagger. For this sample, you can use the api key `special-key` to test the authorization filters.",
+        "This is a Expense Tracker App Swagger. For this sample, you can use the `token` , which is returned after successful sign up or login, for authorization.",
       version: "1.0.0",
       contact: { email: "veronikaisles@gmail.com" },
       license: {
