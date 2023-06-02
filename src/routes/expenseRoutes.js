@@ -6,21 +6,51 @@
  *       - Expenses
  *     summary: Gets all expenses
  *     description: Gets all expenses belonging to a user
+ *     operationId: getAllExpenses
  *     responses:
  *       200:
  *         description: OK
  *         content:
  *           application/json:
  *             schema:
- *               type: object
- *               properties:
- *                 status:
- *                   type: string
- *                   example: OK
- *                 data:
- *                   type: array
- *                   items:
- *                     $ref: "#/components/schemas/Expense"
+ *                $ref: "#/components/schemas/Expense"
+ *       401:
+ *         description: Missing authentication token      
+ *       500: 
+ *         description: Internal server error
+ *     security: 
+ *         - user_auth:
+ *             - write:users
+ *             - read:users
+ * /api/expenses/{expenseId}:
+ *   get:
+ *     tags:
+ *       - Expenses
+ *     summary: Find expense by ID
+ *     description: Returns a single expense
+ *     operationId: getExpenseById
+ *     parameters: 
+ *       -  in: path
+ *          name: expenseId
+ *          description: ID of expense to return
+ *          required: true
+ *          schema: 
+ *           type: string
+ *     responses:
+ *       200:
+ *         description: OK
+ *         content:
+ *           application/json:
+ *             schema:
+ *                $ref: "#/components/schemas/Expense"
+ *       401:
+ *         description: Missing authentication token      
+ *       500: 
+ *         description: Internal server error
+ *     security: 
+ *         - user_auth:
+ *             - write:users
+ *             - read:users
  * components:
  *   schemas:
  *     Expense:
