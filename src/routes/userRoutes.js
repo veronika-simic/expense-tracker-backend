@@ -6,21 +6,42 @@
  *       - User
  *     summary: Logs in the existing user
  *     description: Logs in the existing user with email and password
+ *     operationId: loginUser
+ *     requestBody:
+ *      description: Log in an existing user
+ *      content:
+ *        application/json:
+ *          schema:
+ *              $ref: "#/components/schemas/User"
+ *        application/xml:
+ *          schema:
+ *              $ref: "#/components/schemas/User"
+ *        application/x-www-form-urlencoded:
+ *          schema:
+ *              $ref: "#/components/schemas/User"
+ *      required: 
+ *          true
  *     responses:
  *       200:
  *         description: OK
  *         content:
  *           application/json:
  *             schema:
- *               type: object
- *               properties:
- *                 status:
- *                   type: string
- *                   example: OK
- *                 data:
- *                   type: array
- *                   items:
- *                     $ref: "#/components/schemas/User"
+ *                 $ref: "#/components/schemas/User"
+ *           application/xml:
+ *              schema: 
+ *                 $ref: "#/components/schemas/User"
+ *       400:
+ *         description: Invalid credentials
+ *       401: 
+ *         description:  User does not exist
+ *       405: 
+ *         description: Validation exception
+ *     security: 
+ *          - user_auth:
+ *              - write:users
+ *              - read:users
+ * 
  * /api/user/signup:
  *   post:
  *     tags:
@@ -57,7 +78,6 @@
  *           type: string
  *           example: abcABC123!
  */
-
 
 const express = require("express");
 const { loginUser, signupUser } = require("../controllers/userController");
