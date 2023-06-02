@@ -80,8 +80,12 @@
  *           application/json:
  *             schema:
  *                $ref: "#/components/schemas/Expense"
+ *       400: 
+ *         description: Invalid ID 
  *       401:
- *         description: Missing authentication token      
+ *         description: Missing authentication token
+ *       404: 
+ *         description: Expense not found          
  *       500: 
  *         description: Internal server error
  *     security: 
@@ -121,8 +125,40 @@
  *           application/json:
  *             schema:
  *                $ref: "#/components/schemas/Expense"
+ *       400: 
+ *         description: Invalid ID 
  *       401:
- *         description: Missing authentication token      
+ *         description: Missing authentication token
+ *       404: 
+ *         description: Expense not found          
+ *       500: 
+ *         description: Internal server error
+ *     security: 
+ *         - user_auth:
+ *             - write:users
+ *             - read:users  
+ *   delete:
+ *     tags:
+ *       - Expenses
+ *     summary: Delete existing expense
+ *     description: Delete existing expense by ID
+ *     operationId: deleteExpense
+ *     parameters: 
+ *       -  in: path
+ *          name: expenseId
+ *          description: ID of expense to delete
+ *          required: true
+ *          schema: 
+ *           type: string
+ *     responses:
+ *       200:
+ *         description: OK
+ *       400: 
+ *         description: Invalid ID 
+ *       401:
+ *         description: Missing authentication token
+ *       404: 
+ *         description: Expense not found          
  *       500: 
  *         description: Internal server error
  *     security: 
