@@ -4,6 +4,8 @@
  *   get:
  *     tags:
  *       - Expenses
+ *     summary: Gets all expenses
+ *     description: Gets all expenses belonging to a user
  *     responses:
  *       200:
  *         description: OK
@@ -18,8 +20,7 @@
  *                 data:
  *                   type: array
  *                   items:
- *                     type: object
- *
+ *                     $ref: "#/components/schemas/Expense"
  * components:
  *   schemas:
  *     Expense:
@@ -40,13 +41,13 @@
  *         description:
  *           type: string
  *           example: Cat was verry happy with this purchase
- *         total: 
+ *         total:
  *           type: number
  *           example: 4
- *         date: 
+ *         date:
  *           type: string
  *           example: 2023-05-16T10:00:00.000+00:00
- *         user_id: 
+ *         user_id:
  *            type: string
  *            example: qieuu489u2194jkanm
  *         createdAt:

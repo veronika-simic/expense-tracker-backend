@@ -4,7 +4,25 @@ const swaggerUi = require("swagger-ui-express");
 const options = {
   definition: {
     openapi: "3.0.0",
-    info: { title: "Expenses Tracker API", version: "1.0.0" },
+    info: {
+      title: "Expenses Tracker API",
+      description:
+        "This is a Expense Tracker App Swagger. For this sample, you can use the api key `special-key` to test the authorization filters.",
+      version: "1.0.0",
+      contact: { email: "veronikaisles@gmail.com" },
+      license: {
+        name: "Apache 2.0",
+        url: "http://www.apache.org/licenses/LICENSE-2.0.html",
+      },
+    },
+    externalDocs: {
+      description: "Find out more about Swagger",
+      url: "http://swagger.io",
+    },
+    tags: [
+      { name: "Expenses", description: "Operations about expenses" },
+      { name: "User", description: "Operations about user" },
+    ],
   },
   apis: ["./src/routes/expenseRoutes.js", "./src/routes/userRoutes.js"],
 };
