@@ -168,6 +168,15 @@
  *             - write:users
  *             - read:users  
  * components:
+ *   securitySchemes:
+ *      bearerAuth:
+ *        type: http
+ *        in: header
+ *        name: Authorization
+ *        description: Bearer token to access API endpoints
+ *        scheme: bearer
+ *        bearerFormat: JWT
+ *        value: Bearer <JWT token here>
  *   schemas:
  *     Expense:
  *       type: object
@@ -199,6 +208,8 @@
  *         updatedAt:
  *           type: string
  *           example: 4/20/2022, 2:21:56 PM
+ * security:
+ *    - bearerAuth: []  
  */
 
 const express = require("express");
