@@ -4,6 +4,11 @@ const swaggerUi = require("swagger-ui-express");
 const options = {
   definition: {
     openapi: "3.0.0",
+    servers: [
+      { url: "http://localhost:4000" },
+      { url: "https://localhost:4000" },
+    
+    ],
     info: {
       title: "Expenses Tracker API",
       description:
