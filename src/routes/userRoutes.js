@@ -48,21 +48,36 @@
  *       - User
  *     summary: Sign up user
  *     description: Creates a new user with verified email and password
+ *     operationId: signupUser
+ *     requestBody: 
+ *       description: Create a new user
+ *       content:
+ *        application/json:
+ *          schema:
+ *              $ref: "#/components/schemas/User"
+ *        application/xml:
+ *          schema:
+ *              $ref: "#/components/schemas/User"
+ *        application/x-www-form-urlencoded:
+ *          schema:
+ *              $ref: "#/components/schemas/User"
+ *       required: true
  *     responses:
  *       200:
  *         description: OK
  *         content:
  *           application/json:
  *             schema:
- *               type: object
- *               properties:
- *                 status:
- *                   type: string
- *                   example: OK
- *                 data:
- *                   type: array
- *                   items:
- *                     $ref: "#/components/schemas/User"
+ *               $ref: "#/components/schemas/User"
+ *           application/xml: 
+ *             schema: 
+ *                $ref: "#/components/schemas/User"
+ *       405: 
+ *         description: Invalid input
+ *     security: 
+ *         - user_auth:
+ *             - write:users
+ *             - read:users
  * components:
  *   schemas:
  *     User:
