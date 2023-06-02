@@ -12,13 +12,13 @@
  *      content:
  *        application/json:
  *          schema:
- *              $ref: "#/components/schemas/User"
+ *              $ref: "#/components/schemas/UserLogin"
  *        application/xml:
  *          schema:
- *              $ref: "#/components/schemas/User"
+ *              $ref: "#/components/schemas/UserLogin"
  *        application/x-www-form-urlencoded:
  *          schema:
- *              $ref: "#/components/schemas/User"
+ *              $ref: "#/components/schemas/UserLogin"
  *      required: 
  *          true
  *     responses:
@@ -37,11 +37,6 @@
  *         description:  User does not exist
  *       405: 
  *         description: Validation exception
- *     security: 
- *          - user_auth:
- *              - write:users
- *              - read:users
- * 
  * /api/user/signup:
  *   post:
  *     tags:
@@ -54,13 +49,13 @@
  *       content:
  *        application/json:
  *          schema:
- *              $ref: "#/components/schemas/User"
+ *              $ref: "#/components/schemas/UserSignUp"
  *        application/xml:
  *          schema:
- *              $ref: "#/components/schemas/User"
+ *              $ref: "#/components/schemas/UserSignUp"
  *        application/x-www-form-urlencoded:
  *          schema:
- *              $ref: "#/components/schemas/User"
+ *              $ref: "#/components/schemas/UserSignUp"
  *       required: true
  *     responses:
  *       200:
@@ -74,22 +69,36 @@
  *                $ref: "#/components/schemas/User"
  *       405: 
  *         description: Invalid input
- *     security: 
- *         - user_auth:
- *             - write:users
- *             - read:users
  * components:
  *   schemas:
- *     User:
+ *     UserLogin:
  *       type: object
  *       properties:
- *         _id:
- *           type: string
- *           example: 61dbae02
  *         email:
  *           type: string
  *           example: jane@doe.com
  *         password:
+ *           type: string
+ *           example: abcABC123!
+ *     UserSignUp:
+ *       type: object
+ *       properties:
+ *         email:
+ *           type: string
+ *           example: jane@doe.com
+ *         password:
+ *           type: string
+ *           example: abcABC123!
+ *         confirmedPassword:
+ *           type: string
+ *           example: abcABC123!
+ *     User:
+ *       type: object
+ *       properties:
+ *         email:
+ *           type: string
+ *           example: jane@doe.com
+ *         token:
  *           type: string
  *           example: abcABC123!
  */

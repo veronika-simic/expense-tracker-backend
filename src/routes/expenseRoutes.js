@@ -13,7 +13,9 @@
  *         content:
  *           application/json:
  *             schema:
- *                $ref: "#/components/schemas/Expense"
+ *               type: array
+ *               items: 
+ *                 $ref: "#/components/schemas/Expense"
  *       401:
  *         description: Missing authentication token      
  *       500: 
@@ -170,9 +172,6 @@
  *     Expense:
  *       type: object
  *       properties:
- *         _id:
- *           type: string
- *           example: 61dbae02
  *         title:
  *           type: string
  *           example: Cat food
